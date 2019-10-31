@@ -14,8 +14,7 @@ class BookController {
 
     @RequestMapping
     String index() {
-        final String title = "Building Microservices"
-        bookService.save(title)
+        bookService.findById()
     }
 
 

@@ -16,13 +16,13 @@ public class BookService {
 
     Logger logger = LoggerFactory.getLogger(BookService.class);
 
-    void save(String title) {
+    String findById() {
         Author author = Author.findById(1)
         logger.info("Is initialized: " + GrailsHibernateUtil.isInitialized(author, "books"))
 
         author.discard()
 
-        author.books.each {print(it.title)}
+        author.books.join(",")
     }
 
 }
