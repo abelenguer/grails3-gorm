@@ -14,7 +14,9 @@ class BookController {
 
     @RequestMapping
     String index() {
-        bookService.findById()
+        Long authorId  = bookService.saveAuthor()
+        bookService.findById(authorId)
+        //bookService.findByName()
     }
 
 

@@ -11,7 +11,7 @@ import org.hibernate.annotations.LazyCollectionOption
 @ToString(includes = "name")
 @Entity
 class Author implements GormEntity<Author> {
-    //@LazyCollection(LazyCollectionOption.FALSE)
+
     Set<Book> books
     String name
 
@@ -20,6 +20,6 @@ class Author implements GormEntity<Author> {
     ]
 
     static mapping = {
-        books lazy: false //, fetch: FetchMode.EAGER
+        books lazy: false
     }
 }

@@ -16,8 +16,25 @@ public class BookService {
 
     Logger logger = LoggerFactory.getLogger(BookService.class);
 
-    String findById() {
-        Author author = Author.findById(1)
+    long saveAuthor() {
+        Author author = new Author(name: "Kafka").save(flush: true)
+        new Book(author: author, title: "The castle").save(flush: true)
+        new Book(author: author, title: "The process").save(flush: true)
+        return author.id
+
+    }
+
+    String findByName() {
+        Author author = Author.findByName("Kafka")
+        logger.info("Is initialized: " + GrailsHibernateUtil.isInitialized(author, "books"))
+
+        author.discard()
+
+        author.books.join(",")
+    }
+
+    String findById(Long id) {
+        Author author = Author.findById(id)
         logger.info("Is initialized: " + GrailsHibernateUtil.isInitialized(author, "books"))
 
         author.discard()
